@@ -1,0 +1,31 @@
+<%- include header%>
+<div class="right">
+    <div class="content">
+        <a href="/admin" class="goods_info_title">商品信息管理　</a> >>　　<span class="goods_info_title">添加商品</span>
+    </div>
+    <div class="goods_add_content">
+        <form class="goods_operation">
+            <a href="" class="width btn btn-default">保存商品</a>　　　　　
+            <a href="/admin_add_attribute" class="width btn btn-default">添加属性</a>　　　　　
+            <a href="/admin_del_attribute" class="width btn btn-default">删除属性</a>　　　　　
+            <a href="/" class="width btn btn-default">取消</a>
+            <br/>　　　
+            <div class="goods">
+                商品名称：<input type="text" size="20"/>　　　　　　　　
+                商品数量：
+                <div class="btn-group" style="border-style: none">
+                    <button class="small btn btn-default">－</button>
+                    <button class="small btn btn-default disabled">0</button>
+                    <button class="small btn btn-default">＋</button>
+                </div>
+                <br/><br/>
+                单  价(元)：<input type="text" size="20"/>　　　　　　　　
+                单　　位：  <input type="text" size="20"/>
+                <br/><br/>
+                生产日期：<input type="text" size="20"/>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

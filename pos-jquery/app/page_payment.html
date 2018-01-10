@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Let's Go</a>
+        </div>
+        <div class="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html" >主页</a></li>
+                <li><a href="page_item.html">商品列表</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="page_cart.html"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车(<span id="item_num">0</span>)</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="cart container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3>购物清单</h3></div>
+        <div class="panel-body">
+            <h4></h4>
+            <table class="table table-bordered text-center">
+                <thead id="item">
+                <tr>
+                    <td>分类</td>
+                    <td>名称</td>
+                    <td>单价(元)</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>小计</td>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="panel-heading"><h3 class="title">赠送商品</h3></div>
+        <div class="body panel-body">
+            <table class="table table-bordered text-center">
+                <thead id="promotion-item">
+                <tr>
+                    <td>分类</td>
+                    <td>名称</td>
+                    <td>数量</td>
+                </tr>
+                </thead>
+            </table>
+            </div>
+        <div>
+        <form role="form" class="pull-right">
+            <div class="form-group">
+                <label class="pull-right h4">总计：<span class="sum_price">0.00</span>元</label>
+            </div>
+            <div class="form-group">
+                <label class="pull-right h4">节省：<span class="promotion_price">0.00</span>元</label>
+            </div>
+            <div class="form-group">
+                <a href="page_item.html"><button type="button" class="sure btn btn-lg btn-primary pull-right">确认</button></a>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/bootstrap/js/button.js"></script>
+<script src="lib/moment.js"></script>
+<script src="lib/underscore.js"></script>
+<script src="model/item.js"></script>
+<script src="model/item_bill.js"></script>
+<script src="model/fixtures.js"></script>
+<script src="model/promotion.js"></script>
+<script src="JS/refresh.js"></script>
+<script src="JS/payment.js"></script>
+</body>
+</html>

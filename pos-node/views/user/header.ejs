@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title><%= title%></title>
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand disabled">Let's Go</a>
+        </div>
+        <div class="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="index"><a href="/" >主页</a></li>
+                <li class="goods_list"><a href="/goods_list">商品列表</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="goods_cart"><a href="/goods_cart"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车(<span class="goods_total"><%= goods_total%></span>)</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

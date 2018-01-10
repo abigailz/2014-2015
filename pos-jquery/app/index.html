@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>WebPos</title>
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand disabled">Let's Go</a>
+            </div>
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html" >主页</a></li>
+                    <li><a href="page_item.html">商品列表</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="page_cart.html"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车(<span id="item_num">0</span>)</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="jumbotron">
+            <h1><b>Welcome to Let's Go</b></h1>
+            <p>商店里进行购物结算时会使用收银机(POS)系统，这台收银机会在计算时根据客户的购物车(Cart)中的商品(Item)和商店正在进行的优惠活动(Promotion)进行结算和打印购物清单。已知该商品正在对部分商品进行“买二赠一”的优惠活动。我们需要实现一个名为printInventory函数，该函数能够将制定格式的数据作为参数输入，然后在浏览器的控制台中输出结算清单的文本。</p>
+            <p><a class="btn btn-lg btn-primary" href="page_item.html">Let's Go</a></p>
+        </div>
+    </div>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/bootstrap/js/button.js"></script>
+    <script src="lib/underscore.js"></script>
+  　<script src="JS/refresh.js"></script>
+</body>
+</html>

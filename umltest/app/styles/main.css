@@ -1,0 +1,40 @@
+input {
+  border: 1px;
+  width: 150px;
+  border-bottom-style: solid; }
+
+.text_input {
+  width: 15px;
+  border-style: none; }
+
+textarea {
+  border-style: none;
+  width: 1000px; }
+
+.whole {
+  width: 60%;
+  margin: 0 auto; }
+
+.header {
+  font-size: small; }
+
+.title {
+  background: #696969;
+  padding: 10px;
+  text-align: center;
+  border: 3px double #fff;
+  border-left: solid #000;
+  border-top: solid #000; }
+
+.stu_info {
+  top: 35px;
+  margin-top: 30px; }
+
+.stu-info-item {
+  margin-right: 20px; }
+
+.problem {
+  margin-top: 40px; }
+
+.footer {
+  text-align: center; }

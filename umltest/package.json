@@ -1,0 +1,13 @@
+{
+  "name": "UmlTest",
+  "version": "1.0.0",
+  "description": "wzz",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^1.8.2",
+    "gulp": "^3.6.0",
+    "gulp-sass": "^2.3.2"
+  }
+}

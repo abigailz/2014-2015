@@ -1,0 +1,38 @@
+<%- include header%>
+<div class="container">
+<div class="panel panel-default">
+    <div class="panel-heading text-center"><h4>商品列表</h4></div>
+    <div class="panel-body">
+        <table class="table table-bordered text-center">
+            <thead>
+            <tr>
+                <td class="col-lg-2">分类</td>
+                <td class="col-lg-2">名称</td>
+                <td class="col-lg-2">单价(元)</td>
+                <td class="col-lg-2">单位</td>
+                <td class="col-lg-2"></td>
+            </tr>
+            </thead>
+            <tbody>
+            <%goods.forEach(function(item){%>
+            <tr>
+                <td><%= item.type%></td>
+                <td><%= item.name%></td>
+                <td><%= item.price%></td>
+                <td><%= item.unit%></td>
+                <td><button class='btn btn-primary' onclick="add_goods_cart('<%= item._id%>')">加入购物车</button></td>
+            </tr>
+            <%})%>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".goods_list").addClass("active");
+    });
+</script>
+<script src="/javascripts/goods_list.js"></script>
+</body>
+</html>

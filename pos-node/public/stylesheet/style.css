@@ -1,0 +1,113 @@
+div.header{
+    padding-top: 1%;
+    background-color: lightgray;
+    padding-bottom: 1%;
+    width: 100%;
+}
+
+img{
+    width: 45px;
+    height: 45px;
+    float: left;
+    margin-left: 4%;
+}
+
+div{
+    border: solid 1px;
+}
+
+span.title{
+    font-size: xx-large;
+    padding-left: 1%;
+}
+
+div.left{
+    float: left;
+    width: 20%;
+    height: 90%;
+    position: absolute;
+    border-top-style: none;
+}
+
+div.right{
+    float: right;
+    width:80%;
+    height: 90%;
+    border-style: none;
+}
+
+div.b{
+    border-style:none;
+}
+
+.goods_management{
+    width: 100%;
+    height: 55px;
+    font-size: 1.6em;
+    border-bottom: solid 1px;
+}
+
+.goods_info_title{
+    font-size: 25px;
+}
+div.content{
+    border-style: none;
+    padding-top: 2%;
+    padding-left: 5%;
+}
+div.goods_add_content{
+    border-style: none;
+    font-size: 20px;
+    width:100%;
+    height: 100%;
+}
+
+form.goods_attribute_operation{
+    padding-left: 30%;
+    padding-top: 10%;
+}
+form.goods_operation{
+    padding-left: 10%;
+    padding-top: 4%;
+}
+.width{
+    width:150px;
+}
+
+.goods_table{
+    margin-top: 5%;
+}
+
+.goods_table td{
+    border: solid 1px;
+    font-size: 20px;
+    line-height: 60px;
+    border-left-style: none;
+    border-right-style: none;
+}
+
+div.goods{
+    margin-top: 5%;
+    border-style: none;
+}
+.small{
+    width: 85px;
+}
+
+table.del_goods_table{
+    margin-top: 5%;
+    width:100%;
+}
+table.del_goods_table td{
+    border: solid 1px;
+    font-size: 20px;
+    line-height: 60px;
+    border-left-style: none;
+    border-right-style: none;
+}
+
+form.promotion_rule{
+    padding-left: 15%;
+    padding-top: 10%;
+    font-size: 20px;
+}

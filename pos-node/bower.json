@@ -1,0 +1,21 @@
+{
+  "name": "POS-NODE",
+  "version": "0.0.0",
+  "authors": [
+    "wangzhongbi <15928142456@163.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/wangzhongbi/POS-NODE",
+  "description": "pos-node",
+  "dependencies": {
+    "bootstrap": "~3.3.1",
+    "underscore": "~1.7.0"
+  }
+}

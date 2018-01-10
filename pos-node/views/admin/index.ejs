@@ -1,0 +1,39 @@
+<%- include header%>
+<div class="right">
+    <div class="content">
+    <p class="goods_info_title">商品信息管理</p><br>
+        <a class="btn btn-default btn-lg" href="/admin_add_goods">添加商品</a>
+        <table class="goods_table table-responsive text-center">
+            <thead>
+            <tr>
+                <td class="col-lg-1">序号</td>
+                <td class="col-lg-1">商品名称</td>
+                <td class="col-lg-2">商品数量</td>
+                <td class="col-lg-1">单价(元)</td>
+                <td class="col-lg-1">单位</td>
+                <td class="col-lg-2">发布时间</td>
+                <td class="col-lg-2">操作</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>１</td>
+                <td>苹果</td>
+                <td>
+                    <div class='b btn-group'>
+                        <button type='button' class='btn btn-default'>－</button>
+                        <input  class='btn btn-default'value="123" style="width:70px"/>
+                        <button type='button' class='btn btn-default'>＋</button>
+                    </div>
+                </td>
+                <td>３</td>
+                <td>斤</td>
+                <td>2014-12-23</td>
+                <td>　　　　<a href="/admin_goods_detail">详情</a>　　<a>删除</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

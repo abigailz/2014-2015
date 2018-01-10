@@ -1,0 +1,50 @@
+<%- include header%>
+<div class="cart_list container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h4>商品列表</h4></div>
+        <div class="panel-body">
+            <table class="table table-bordered text-center">
+                <thead id="content">
+                <tr>
+                    <td class="col-lg-2">名称</td>
+                    <td class="col-lg-2">单价(元)</td>
+                    <td class="col-lg-2">单位</td>
+                    <td class="col-lg-2">数量</td>
+                    <td class="col-lg-2">小计</td>
+                </tr>
+                </thead>
+                <tbody>
+                <%goods.forEach(function(item){%>
+                <tr class="item" name="<%= item._id%>">
+                    <td><%= item.name%></td>
+                    <td><%= item.price%></td>
+                    <td><%= item.unit%></td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="reduce btn btn-default"onclick="delete_one_goods('<%= item._id%>')">-</button>
+                            <button class="btn btn-default disabled" name="<%= item._id%>"><%= item.number%></button>
+                            <button class="add btn btn-default" onclick="add_goods('<%= item._id%>')">+</button>
+                        </div>
+                    </td>
+                    <td name="<%= item._id%>"><%= item.summary_display%></td>
+                </tr>
+                <%})%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container">
+        <label class="pull-right h4">总计：<span class="summary"><%= summary_price%></span>元</label>
+    </div>
+    <div class="container">
+        <a href="/goods_pay"><button type="button" class="btn btn-lg btn-primary pull-right">付款</button></a>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".goods_cart").addClass("active");
+    });
+</script>
+<script src="/javascripts/goods_cart.js"></script>
+</body>
+</html>

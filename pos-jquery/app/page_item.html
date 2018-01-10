@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Let's Go</a>
+        </div>
+        <div class="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html" >主页</a></li>
+                <li class="active"><a href="page_item.html">商品列表</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="page_cart.html"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车(<span id="item_num">0</span>)</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading text-center"><h4>商品列表</h4></div>
+        <div class="panel-body">
+            <table class="table table-bordered text-center">
+                <thead>
+                <tr>
+                    <td>分类</td>
+                    <td>名称</td>
+                    <td>单价(元)</td>
+                    <td>单位</td>
+                    <td></td>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="lib/underscore.js"></script>
+<script src="model/fixtures.js"></script>
+<script src="model/item.js"></script>
+<script src="JS/item_jquery.js"></script>
+<script src="JS/refresh.js"></script>
+</body>
+</html>
