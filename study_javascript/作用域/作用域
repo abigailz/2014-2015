@@ -1,0 +1,39 @@
+作用域控制着变量与参数的可见性及生命周期
+（1）作用域
+    只有函数才会创建新的作用域，例如：if不会创建一个新的作用域
+    例如：
+            var x = 1;
+            console.log(x); // 1
+            if (true) {
+                var x = 2;
+                console.log(x); //2
+            }
+            console.log(x);// 2
+
+（2）函数作用域
+    javascript中的变量作用域为函数体内有效，无块作用域，例如：
+                function func() {
+                for (var i = 0; i < 2; i++) {
+                    //code
+                }
+                console.log(i);//此时i等于2；
+                }
+（3）作用域链
+    作用域链随着嵌套函数的层次会变得很长，但是查找变量的过程依旧是遍历作用域链（链表）
+    一直向上查找，直到找出该值，如果遍历完作用域链仍然没有找到对应的属性，则返回undefined
+    例如：
+            var str = 'global';
+            function Test(){
+                console.log(str);
+                var str = 'local';
+                console.log(str);
+            }
+            console.log(str);
+            Test();//输出undefined，local
+
+（4）名称解析顺序
+    当常识在一个函数作用域内访问一个foo变量的时候，javascript将按照一下顺序查找
+    1，当前作用内是否有 var foo的定义
+    2，函数形参中是否有foo变量
+    3，函数自身的名称是否为foo
+    4，跳到外层定义域，再从第一步开始查找起

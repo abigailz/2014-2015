@@ -1,0 +1,49 @@
+(1) typeof
+    写法： typeof(X)或者typeof X
+    运算结果类型：string类型  例如：typeof 123 一定是“number”  而 typeof typeof 123 一定是 “string”
+
+（2） == 和 === 和 ！==
+    == 值相等，比如：数值组成的字符串与该字符串表示的值是相等的
+    === 全等，就是数据值和数据类型都必须相等才是true
+    ！== 不全等  例如： A！= B || typeof(A) != typeof(B)
+    全不等   例如：A!=B && typeof(A)!=typeof(B)
+
+    （A）相等运算符
+        （1）操作数类型相同，比较两个数的值
+        （2）类型不同：1，null和undefined相等；2，其中一个数字，另一个字符串，则将字符串转换为数字，再比较；3，其中一个是true，先转换为1，再比较；
+                    4，如果一个是对象，一个是数字/字符串，则将对象转换为原始值（通过toString（）或者valueOf（）方法）；5，其他情况直接返回false
+    （B）===
+        （1）操作数类型不同，不比较，直接返回false
+        （2）操作数类型相同：1，都是数字，值相同就true（注意：NaN ！= NaN）；2，都是字符串，比较值；3，都是布尔值；4，两个操作数引用同一个对象，则两者完全相同，否则不相同
+                            5，两个数都是null/undefined，则true
+（3）javascript 将0开头的整数常量当八进制处理，所以后面的0123实际就是八进制数字，而“0123”是按十进制转换成数字值的，自然不会等。
+
+（4）instanceof运算符
+    二元运算符，用来判断指定对象是否为某个类的实例或者构造函数，例如：
+    A instanceof B 那么A必须是一个合法的javascript对象，B必须是一个合法的javascript函数，如果在A的原型连上面能够发现B，那么instanceof操作符将返回true，否则将返回false
+
+（5）delete运算符：删除一个对象的属性，成功返回true，反之false或者在严格模式下会抛出一个错误
+    delete expression   //如果expression不是一个对象属性的引用，则delete不起作用
+    例如：
+    delete global//删除全局变量(全局变量是window的属性)
+    delete obj.name
+    delete obj["name"]
+    delete obj[index]
+
+    delete不能删除的变量
+    1，不能删除普通的变量
+    2，不能删除一个对象从原型继承而来的东西
+    3，删除一个数组的元素时，数组的长度不会变小
+
+    例如：
+    var origin = {};
+    var a = { x: 10 };
+    origin.a = a;
+    delete origin.a; // o.a属性被删除
+    console.log(origin.a); // undefined
+    console.log(a.x); // 10, 因为{ x: 10 } 对象依然被 a 引用，所以不会被回收，不影响原来的值
+    注意：跨浏览器的问题：有的浏览器使用delete删除后，元素的顺序或者添加元素后的顺序会发生变化，所以最还采用key：value方式，防止出现顺序混乱
+
+（6）in
+    in运算符判断左侧运算数是否为右侧运算数的成员
+（7）

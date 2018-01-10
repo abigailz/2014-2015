@@ -1,0 +1,55 @@
+（1）函数自身有一个caller属性，用来表示调用当前函数的上层函数，函数的caller值是动态变化的，caller值为null表示函数没有被调用或者被全局代码调用，
+
+（2）eval（）函数 ：eval 是某种介于表达式求值器和语句执行器的混合体,表达式求值，可以解析json格式的数据（json自带JSON.parse()）;
+
+（4）函数与对象之间的关系：
+    例如：
+    console.log(Function instanceof Function)  //true
+    console.log(Function instanceof Object)  //true
+    console.log(Object instanceof Function)  //true
+
+    function Foo(){}
+    var foo = new Foo();
+    console.log(foo instanceof Foo)  //true
+    console.log(foo instanceof Function)  //false
+    console.log(foo instanceof Object)  //true
+    console.log(Foo instanceof Function)  //true
+    console.log(Foo instanceof Object);  //true
+
+（5）静态变量以及静态函数：对象本身可以访问，当时实例对象不能访问
+    例如：      function Test(){}
+               Test.num = 72;//静态变量
+               Test.fn = function ()  //静态函数
+               {
+               };
+               console.log(Test.num);//72
+               console.log(typeof Test.fn);//function
+               var test = new Test();
+               console.log(test.num);//undefined
+               console.log(typeof test.fn);//undefined
+
+（6）实例变量以及实例方法
+    例如：          function Box(){
+                       this.a=[]; //实例变量
+                       this.fn=function(){ //实例方法
+
+                       }
+                   }
+
+                   console.log(typeof Box.a); //undefined
+                   console.log(typeof Box.fn); //undefined
+
+                   var box=new Box();
+                   console.log(typeof box.a); //object
+                   console.log(typeof box.fn); //function
+
+（7）匿名函数：没有名字的函数，使用()将匿名函数括起来，然后后面再加一对小括号（包含参数列表）
+    例如：      var v='Hello World';
+               (function () {
+                   console.log(v);
+               })();  // Hello World
+（8）（function（）{}）（）以及（function（）{}（））区别
+    结果是一样的。
+    （function（）{}）（）等同于：当做表达式解析
+                                var f = function（）{}（）；
+    （function（）{}（））直接执行

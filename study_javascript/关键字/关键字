@@ -1,0 +1,66 @@
+（1）call  &&  apply  :可以在一个对象上面借用另一个对象的方法
+    例如：
+        var jack = {
+            name: 'jack',
+            age: 22
+        };
+        function printName(){
+            return this.name;
+        }
+        console.log(printName.call(jack));  //jack
+        console.log(printName.apply(blue));  //blue
+    call 和 apply在只有一个参数的时候是一样的，如果有多个参数的时候：
+    例如：
+        setName.apply(jack,["rename jackA"]);
+        console.log(printName.apply(jack));
+        setName.call(blue,"rename blueB");
+        console.log(printName.apply(blue));
+
+    apply的第二个参数为一个函数的参数组成的数组，call只需要以逗号（，）隔开就好了。
+
+（2）new 关键字
+    例如： var f = new F();
+    new 关键字 干了三件事
+    第一：创建了一个空的对象  例如：var f = {}
+    第二：将对象的_ _prototy_ _ 指向构造函数的prototype  例如：f._ _proto_ _ = F.prototype;
+    第三：继承 例如：F.call(f);
+
+（3）this：当前调用的上下文环境
+    例如：代码一
+    var name = "The Window";
+    var object = {
+        name: "My Object",
+        getNameFunc: function () {
+            return function () {
+                return this.name;
+            };
+        }
+    };
+    alert(object.getNameFunc()()); // the Window
+    代码二：
+    var name = "The Window";
+    var object = {
+        name: "My Object",
+        getNameFunc: function () {
+            var that = this;
+            return function () {
+                return that.name;
+            };
+        }
+    };
+    alert(object.getNameFunc()()); // My Object
+
+（4）let关键字（firefox可以使用，chrome不能使用）
+    var一样是声明变量的，但在声明前使用的话，会报错，声明时没有初始化的话，则为undefined的
+    let是块级作用域申明变量的var，var是非块级作用域的
+    例如：
+    for (var i = 0; i < 10; i++) {
+        //code
+    }
+    console.log(i); // 10
+    for (let index = 0; index < 15; index++) {
+        //code
+    }
+   alert(index);// 报错
+   所以在有的时候使用let我们不希望影响到外部的任何东西，建立局部的变量
+

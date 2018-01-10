@@ -1,0 +1,36 @@
+（1）prototype 原型
+    javascript的所有function类型的对象都有一个prototype属性，在构造函数的prototype上面定义的属性以及方法，
+    都是可以通过其构造的对象直接访问和调用的,换一句话说，prototype提供了一群同类对象共享和方法的机制。
+    javascript内部对象的属性和方法追溯机制是通过prototype链来实现的
+    prototype指明了当前函数是谁的构造函数，只有函数才有prototype属性并且可以访问到
+
+（2）遍历原型链的时候，是由下而上的，最先遇到的属性值最先返回
+
+（3）_ _proto_ _属性和prototype属性的区别：
+    prototype是function对象中专有的属性。
+    _ _proto_ _是普通对象的隐式属性，在new的时候，会指向prototype所指的对象；
+    _ _ptoto_ _实际上是某个实体对象的属性，而prototype则是属于构造函数的属性。_ _ptoto_ _只能在学习或调试的环境下使用。
+
+（4）JS所有对象全部继承自Object，所有对象的原型链的根节点是Object.prototype
+
+（5）constructor：指向构造函数（实例与构造函数之间,可以获得构造函数本身）
+（6）_ _prototype_ _ :指向原型对象（实例和构造函数的prototype之间）
+（7）prototype
+    构造函数中有一个prototype属性，这个属性是一个指针，指向它的原型对象，原型对象也有一个constructor属性（指向构造函数）
+    例如：Person.prototype.constructor = Person;
+    例如：
+            function B(){
+            }
+            var b = new B();
+            console.log(b.prototype); //undefined
+            console.log(b.__proto__);//B{}
+            console.log(b.constructor);//function B(){}
+            console.log(B.prototype.constructor); //function B(){}
+            console.log(B.constructor); //function Function(){[native code]}
+
+（8）原型模式的执行流程
+    1，先查找构造函数的实例里的属性和方法，如果有，就立即返回
+    2，如果构造函数的实例没有，就去它的原型对象里找，如果有，就立即返回
+
+（9）_ _proto_ _
+每一个通过函数和new操作符生成的对象都具有一个属性_ _proto_ _ ，这个属性保存了创建它的构造函数的prototype属性的引用。
