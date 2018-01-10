@@ -1,0 +1,109 @@
+﻿
+android interface
+
+请求说明
+1.client 每次请求url后面带上token参数，token由：手机类型，username,pwd,tmsi,手机型号组成，version 用逗号分隔，
+并且加密,username 暂定有11为号码组成，pwd 采用MD5，tmsi第一次登录的时候传0,之后传由服务器返回的数据
+
+
+1.登录
+http://host/tsv/c/user/login？token=xxx
+post 数据
+{"loc":"经度，维度"}
+
+返回数据:
+{"code":"200","msg":"success","data":{"tmsi":"1426124776691","type":"1"}}
+
+
+2.(执勤人员,办事人员,分配人员)获取问题列表
+http://host/tsv/c/question/list?token=xxx&pageSize=1&size=10&state=xx&time=123456
+pageSize 获取第几页的数据(由1开始)
+size 获取的条数
+state 问题的状态,0:获取所有
+
+返回数据
+{"code":"200","msg":"success"
+,"data":{
+"total":"1","time":"1426125862253"
+,"list":[{"id":"2","qid":"test","title":"title","uid":"44444","createTime":"1426054489394","url":"","state":"1","loc":"23,34","desc":"desc"}]
+}
+}
+
+3.获取某个问题的所有信息
+http://host/tsv/c/question/get?token=xxx&qid=xxx
+
+{"code":"200","msg":"success"
+,"data":{
+"question":{"id":"2","qid":"qid2","title":"title","uid":"44444","createTime":"1426054489394","url":"","state":"1","loc":"23,34","desc":"desc"}
+,"user":{"userName":"13881702448","type":"1"}
+}
+}
+
+
+4.执勤人员提交问题
+
+文件
+http://host/tsv/c/question/addpic?token=xxx
+fileData=
+返回数据
+{"code":"200","msg":"xxx","data":{"url":"xxx"}}
+
+描述信息
+http://host/tsv/c/question/add?token=xxx
+{"title":"xx","loc":"经度，维度","url":"xx","desc":"xxx"}
+返回数据
+{"code":"200","msg":"xxx"}
+
+5.办事员处理问题提交结果
+
+文件
+http://host/tsv/c/question/dealpic?token=xxx
+fileData=
+返回数据
+{"code":"200","msg":"xxx","data":{"url":"xxx"}}
+
+描述信息
+http://host/tsv/c/question/deal?token=xxx
+{"loc":"经度，维度","url":"xx","desc":"xxx"}
+返回数据
+{"code":"200","msg":"xxx"}
+
+6.分页获取人员列表
+http://host/tsv/c/user/list?token=xxx&type=xx&pageSize=1&size=10
+type 人员类型
+pageSize 页数
+size 一页的条数
+
+{"code":"200","msg":"success"
+,"data":[
+{"id":"2","uid":"00000","userName":"13094415143","type":"2","createTime":"23456789","uid":"00000","type":"2"}
+,{"id":"5","uid":"33333","userName":"13881702777","type":"2","createTime":"4567890","uid":"33333","type":"2"}]}
+
+7.分配人员分配问题
+
+http://host/tsv/c/question/allocate?token=xxx
+
+{"qid":"x","uid":"x","desc":"x"}
+返回数据
+{"code":"200","msg":"xxx"}
+
+8.文件下载
+http://host/tsv/c/question/download?token=xxx&qid=xx&url=xxx
+
+返回文件流
+
+9.执勤人员关闭问题
+http://host/tsv/c/user/close？token=xxx
+post 数据
+{"qid":"xx","loc":"经度，维度"}
+
+返回数据:
+{"code":"200","msg":"success","data":{"tmsi":"1426124776691","type":"1"}}
+
+
+10.通知类的消息，思考采用与服务器建立一个长连接，有消息，服务器推送给client（待定）
+
+
+问题：
+1. 任务的分配如果是多个人同时分配，这个可能会出现被分配两次，是否考虑加锁
+

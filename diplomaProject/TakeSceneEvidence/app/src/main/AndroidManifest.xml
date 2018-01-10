@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.evidence.test">
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.tsv.activity.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tsv.activity.PatrolTaskList"
+            android:label="@string/task_list">
+
+        </activity>
+        <activity
+            android:name="com.tsv.activity.TaskCompleted"
+            android:label="任务已经完成">
+
+        </activity>
+        <activity
+            android:name="com.tsv.activity.PatrolClosedTask"
+            android:label="关闭任务">
+
+        </activity>
+        <activity
+            android:name="com.tsv.activity.PatrolCreateTask"
+            android:label="创建新任务">
+
+        </activity>
+        <activity
+            android:name="com.tsv.activity.AssignTaskList"
+            android:label="@string/task_list">
+
+        </activity>
+        <activity
+            android:name="com.tsv.activity.TaskNoClosed"
+            android:label="任务未关闭">
+
+        </activity>
+        <activity
+            android:name="com.tsv.activity.AssginTask"
+            android:label="任务未分配">
+
+        </activity>
+        <activity
+            android:name="com.tsv.activity.TaskNoComplete"
+            android:label="任务未处理">
+
+        </activity>
+        <activity
+            android:name="com.tsv.activity.WorkingManList"
+            android:label="任务列表">
+
+        </activity>
+        <activity
+            android:name="com.tsv.activity.WorkingManSolveTask"
+            android:label="解决任务">
+
+        </activity>
+    </application>
+
+</manifest>

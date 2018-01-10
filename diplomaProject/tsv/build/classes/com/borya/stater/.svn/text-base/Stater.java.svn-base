@@ -1,0 +1,162 @@
+package com.borya.stater;
+
+import java.net.InetSocketAddress;
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import org.apache.log4j.Logger;
+import org.apache.mina.core.filterchain.DefaultIoFilterChainBuilder;
+import org.apache.mina.core.service.IoProcessor;
+import org.apache.mina.core.service.SimpleIoProcessorPool;
+import org.apache.mina.filter.codec.ProtocolCodecFilter;
+import org.apache.mina.filter.executor.ExecutorFilter;
+import org.apache.mina.filter.logging.LogLevel;
+import org.apache.mina.filter.logging.LoggingFilter;
+import org.apache.mina.filter.ssl.SslFilter;
+import org.apache.mina.transport.socket.SocketAcceptor;
+import org.apache.mina.transport.socket.SocketSessionConfig;
+import org.apache.mina.transport.socket.nio.NioProcessor;
+import org.apache.mina.transport.socket.nio.NioSession;
+import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
+
+import com.borya.closure.Constant;
+import com.borya.codec.LocalCodecFactory;
+import com.borya.net.SessionsFilter;
+import com.borya.nio.ClientConnectionHandler;
+import com.borya.transport.socket.ssl.BogusSslContextFactory;
+
+public class Stater {
+
+	private Logger log = Logger.getLogger(getClass());
+	private int SOCKET_PORT;
+	private boolean SOCKET_USE_SSL;
+	private SocketAcceptor socketAacceptor;
+	
+	public Stater(){
+		SOCKET_PORT = Constant.SOCKET_PORT;
+		SOCKET_USE_SSL = Constant.SOCKET_USE_SSL;
+	}
+	
+	public boolean start(){
+        try{
+        	process();
+        	return true;
+        }catch(Exception ex){
+        	log.fatal(ex.getMessage(),ex);
+        	return false;
+        }
+    }
+	
+	private void process()throws Exception{
+    	socketAacceptor = buildSocketAcceptor();	
+        DefaultIoFilterChainBuilder chain = socketAacceptor.getFilterChain();
+
+//        MdcInjectionFilter mdcInjectionFilter = new MdcInjectionFilter();
+//        chain.addLast("mdc", mdcInjectionFilter);
+//        chain.addLast("codec", new ProtocolCodecFilter(
+//                new TextLineCodecFactory()));
+        
+        final int eventThreads = 16;
+        
+//        ExecutorThreadModel threadModel = ExecutorThreadModel.getInstance("ECSclient");
+//        ThreadPoolExecutor eventExecutor = (ThreadPoolExecutor)threadModel.getExecutor();
+//        eventExecutor.setCorePoolSize(eventThreads + 1);
+//        eventExecutor.setMaximumPoolSize(eventThreads + 1);
+//        eventExecutor.setKeepAliveTime(60, TimeUnit.SECONDS);
+        
+//        ccsSocketAacceptor.getDefaultConfig().setThreadModel(threadModel);
+//        ccsSocketAacceptor.getDefaultConfig().setThreadModel(ThreadModel.MANUAL);
+        
+        ExecutorFilter executorFilter = new ExecutorFilter();
+        ThreadPoolExecutor eventExecutor = (ThreadPoolExecutor)executorFilter.getExecutor();
+        final ThreadFactory originalThreadFactory = eventExecutor.getThreadFactory();
+        
+        ThreadFactory newThreadFactory = new ThreadFactory(){
+            private final AtomicInteger threadId = new AtomicInteger(0);
+            @Override
+            public Thread newThread(Runnable runnable){
+                Thread t = originalThreadFactory.newThread(runnable);
+                t.setName("SSL executor thread - " + threadId.incrementAndGet());
+                t.setDaemon(true);
+                return t;
+            }
+        };
+        eventExecutor.setThreadFactory(newThreadFactory);
+        eventExecutor.setCorePoolSize(eventThreads);
+        eventExecutor.setMaximumPoolSize(eventThreads + 1);
+        eventExecutor.setKeepAliveTime(60, TimeUnit.SECONDS);
+        
+        
+        //chain.addFirst("logger", new LoggingFilter());
+        chain.addLast("threadModel", executorFilter);
+        //chain.addFirst("codec",new ProtocolCodecFilter(
+    	//	   new TextLineCodecFactory(Charset.forName(ENCODING))));
+        if(SOCKET_USE_SSL){
+        	// Add SSL filter if SSL is enabled.
+        	SslFilter sslFilter = 
+        			new SslFilter(BogusSslContextFactory.getInstance(true));
+        	//sslFilter.setNeedClientAuth(true);
+        	//sslFilter.setWantClientAuth(true);
+        	chain.addLast("sslFilter", sslFilter);
+        	log.info("SSL ON");
+        }
+        chain.addLast("socket", new ProtocolCodecFilter(new LocalCodecFactory()));
+        chain.addAfter("socket", "outCup", new SessionsFilter());
+        
+        // log4j logger
+        LoggingFilter loggingFilter = new LoggingFilter();  
+        loggingFilter.setSessionClosedLogLevel(LogLevel.NONE);  
+        loggingFilter.setSessionCreatedLogLevel(LogLevel.DEBUG);  
+        loggingFilter.setSessionOpenedLogLevel(LogLevel.INFO);  
+        chain.addLast("logging", loggingFilter);     
+           
+        socketAacceptor.setHandler(new ClientConnectionHandler("PUSH-Android"));
+        socketAacceptor.bind(new InetSocketAddress(SOCKET_PORT));
+        log.info("Listening on port " + SOCKET_PORT);
+    }
+	
+	public void stop() {
+        if (socketAacceptor != null) {
+        	socketAacceptor.unbind();
+        	socketAacceptor = null;
+        }
+    }
+	
+	private SocketAcceptor buildSocketAcceptor() {
+    	SocketAcceptor socketAcceptor;
+    	int ioThreads = Runtime.getRuntime().availableProcessors();
+    	// Set the executor that processors will use. 
+    	// Note that processors will use another executor 
+    	// for processing events (i.e. incoming traffic)
+    	Executor ioExecutor = new ThreadPoolExecutor(
+    			ioThreads + 1, 
+    			ioThreads + 1, 
+    			60, 
+    			TimeUnit.SECONDS, 
+    			new LinkedBlockingQueue<Runnable>() );
+    	IoProcessor<NioSession> processor = new SimpleIoProcessorPool<NioSession>(NioProcessor.class);
+    	socketAcceptor = new NioSocketAcceptor(ioExecutor,processor);
+    	
+    	//Set that it will be possible to bind a socket if there is a connection in the timeout state	
+    	socketAcceptor.setReuseAddress(true);
+    	// Set the listen backlog (queue) length. Default is 50.
+    	socketAcceptor.setBacklog(50);
+    	
+    	// Set default (low level) settings for new socket connections
+        SocketSessionConfig socketSessionConfig = socketAcceptor.getSessionConfig();
+    	socketSessionConfig.setKeepAlive(true);
+        int receiveBuffer = 2048;// -1;
+        int sendBuffer = 2048;// -1;
+//        int linger = -1;
+        socketSessionConfig.setReceiveBufferSize(receiveBuffer);
+        socketSessionConfig.setSendBufferSize(sendBuffer);
+//        socketSessionConfig.setSoLinger(linger);
+//        socketSessionConfig.setTcpNoDelay(true);
+    	return socketAcceptor;
+    }
+	
+}

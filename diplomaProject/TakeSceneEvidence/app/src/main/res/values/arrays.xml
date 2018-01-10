@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="BigType">
+        <item>路灯</item>
+        <item>市容环境</item>
+        <item>城市绿化</item>
+        <item>路面污染</item>
+        <item>下水道井盖</item>
+    </string-array>
+    <string-array name="SmallType">
+        <item>摆地摊</item>
+        <item>私搭乱建</item>
+        <item>胡乱停车</item>
+        <item>乱扔垃圾</item>
+        <item>占道经营</item>
+        <item>胡乱贴广告</item>
+    </string-array>
+    <string-array name="address">
+        <item>郫县</item>
+        <item>金牛区</item>
+        <item>成华区</item>
+        <item>温江区</item>
+        <item>武侯区</item>
+        <item>高新西区</item>
+        <item>青羊区</item>
+        <item>青白江区</item>
+        <item>锦江区</item>
+        <item>双流县</item>
+    </string-array>
+    <string-array name="leisure">
+        <item>张一</item>
+        <item>张二</item>
+        <item>张三</item>
+        <item>张四</item>
+        <item>张五</item>
+    </string-array>
+    <string-array name="directionOne">
+        <item>南</item>
+        <item>北</item>
+    </string-array>
+    <string-array name="directionTwo">
+        <item>东</item>
+        <item>西</item>
+    </string-array>
+</resources>

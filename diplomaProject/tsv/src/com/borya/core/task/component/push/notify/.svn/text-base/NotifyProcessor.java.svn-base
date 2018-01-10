@@ -1,0 +1,119 @@
+package com.borya.core.task.component.push.notify;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.apache.mina.core.session.IoSession;
+
+import com.borya.core.task.service.Handler;
+import com.borya.core.task.service.Processor;
+import com.borya.dao.NotifyMsgDAO;
+import com.borya.model.db.NotifyMsg;
+import com.borya.model.socket.send.Send;
+import com.borya.net.AbstractHandler;
+import com.borya.net.RecoveryHandler;
+import com.borya.util.SIDUtils;
+import com.borya.util.SocketWriteUtils;
+
+public class NotifyProcessor extends AbstractHandler implements Processor{
+	
+	Logger log = Logger.getLogger(getClass());
+	private Handler handler;
+	NotifyMsgDAO notifyMsgDAOImpl;
+	private volatile boolean isEnd;
+	
+	public NotifyProcessor(Handler handler,NotifyMsgDAO notifyMsgDAOImpl) {
+		this.handler = handler;
+		this.notifyMsgDAOImpl = notifyMsgDAOImpl;
+		isEnd = true;
+	}
+	
+	public void init() {
+		// TODO Auto-generated method stub
+	}
+
+	public final boolean isEnd() {
+		return isEnd;
+	}
+
+	public void process(){
+		if(!isEnd){
+			return;
+		}
+		
+		isEnd = false;
+		handler();
+		isEnd = true;
+		
+		handler.onSentComPlete(this, true);
+	}
+	
+	/**
+	 * 遍历所有IoSession,发送数据
+	 * @return
+	 */
+	private boolean handler(){
+		Iterator<Map.Entry<String,IoSession>> items = 
+				getUserDataManager().getIoSessions().getAll();
+		Map.Entry<String, IoSession> entry;
+		while(items.hasNext()){
+			entry = items.next();
+			
+			// Map<msgId,NotifyMsg>
+			Map<String,NotifyMsg> uid_notifyMsgs = 
+					getUserDataManager().getNotifyMsgs().get(entry.getKey());
+			if(uid_notifyMsgs == null || uid_notifyMsgs.size() < 1){
+				continue;
+			}
+			
+			handler_send(entry.getValue(),uid_notifyMsgs);
+			continue;
+		}
+		
+		return true;
+	}
+	
+	
+	private void handler_send(IoSession ioSession,Map<String,NotifyMsg> uid_notifyMsgs){
+		Map<String,NotifyMsg> notifyMsgs_new = 
+				new HashMap<String,NotifyMsg>(uid_notifyMsgs.size()<<1);
+		
+		for(NotifyMsg msg : uid_notifyMsgs.values()){
+			// 判断发送次数
+			if(msg.getPushNum() < 3){
+				msg.setPushNum(msg.getPushNum()+1);
+				
+				notifyMsgs_new.put(msg.getMsgId(), msg);
+				Send send = new Send();
+				send.setCID("0");
+				send.setUID(msg.getUid());
+				send.setSID(SIDUtils.creatSID());
+				send.setParams(msg.getBase64Context());
+				
+				write(ioSession,send.toData());
+				continue;
+			}
+			
+			// 切断连接,存数据到DB
+			RecoveryHandler.clear_Data(ioSession,null,true);
+			return;
+		}
+		
+		// save message to db
+		final String key = String.valueOf(ioSession.hashCode());
+		getUserDataManager().getNotifyMsgs().put(key,notifyMsgs_new);
+		return;
+	}
+	
+	private void write(IoSession ioSession ,String context){
+		SocketWriteUtils.write(ioSession, context);
+	}
+
+	public void shutDown() {
+		handler = null;
+		notifyMsgDAOImpl = null;
+	}
+	
+}

@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="1dip">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/before"
+                layout="@layout/task_no_complete">
+
+            </include>
+
+            <TableRow
+                android:id="@+id/tableRow8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/before"
+                android:layout_marginTop="20dip">
+
+                <TextView
+                    android:id="@+id/result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="处理结果描述:"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tableRow8"
+                android:layout_marginTop="8dip">
+
+                <EditText
+                    android:id="@+id/resultDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_edit_text_bg"
+                    android:ems="10"
+                    android:hint="请输入"
+                    android:maxLines="2"
+                    android:scrollbars="vertical"
+                    android:singleLine="false"
+                    android:textColorHint="#AAAAAA" />
+            </TableRow>
+
+
+            <TableRow
+                android:id="@+id/tableRow10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tableRow9"
+                android:layout_marginTop="8dip">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="处理之后的照片:"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <Button
+                    android:id="@+id/takePhone"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginStart="10dip"
+                    android:background="@drawable/button_style"
+                    android:text="拍照"
+                    android:textColor="#ffffff" />
+            </TableRow>
+
+            <Button
+                android:id="@+id/upload"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/tableRow10"
+                android:layout_marginTop="8dip"
+                android:background="@drawable/button_style"
+                android:text="上传相册照片"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/ok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/upload"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_style"
+                android:text="回传"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

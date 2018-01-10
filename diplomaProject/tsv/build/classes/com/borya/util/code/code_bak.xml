@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	修改code.xml文件后,请执行ProduceCodes.getInstance();生成StatusCode.java代码(id的值引用以前的)
+ -->
+<codes>
+
+	<configuration>
+		<!-- 是否可把debug信息添加到StatusCode内的开关 -->
+		<dubug-switch>true</dubug-switch>
+	</configuration>
+	
+	<!-- 老错误码 -->
+	<code id="SUCCESS">							<num>200</num>	<msg>success</msg>						</code>
+	<code id="NO_CONTENT">						<num>204</num>	<msg>无内容</msg>						</code>
+	<code id="ARREARAGE">						<num>301</num>	<msg>欠费</msg>							</code>
+	<code id="BALANCE_NOT_ENOUGH">				<num>302</num>	<msg>余额不足</msg>						</code>
+	<code id="NOT_MODIFIED">					<num>304</num>	<msg>无修改</msg>						</code>
+	<code id="BAD_REQUEST">						<num>400</num>	<msg>请求错误</msg>						</code>
+	<code id="UNAUTHORIZED">					<num>401</num>	<msg>未授权</msg>						</code>
+	<code id="FORBIDDEN">						<num>403</num>	<msg>未授权</msg>						</code>
+	<code id="PROXY_AUTHENTICATION_REQUIRED">	<num>407</num>	<msg>代理未授权</msg>					</code>
+	<code id="REQUEST_TIMEOUT">					<num>408</num>	<msg>请求超时</msg>						</code>
+	<code id="NOT_MEDIA_TYPE">					<num>415</num>	<msg>不支持的媒体类型</msg>				</code>
+	<code id="INTERVAL_SERVER_ERROR">			<num>500</num>	<msg>内部服务器错误</msg>				</code>
+	<code id="SYSTEM_EXCEPTION">				<num>600</num>	<msg>系统异常</msg>						</code>
+	<code id="VERSION_ERROR">					<num>601</num>	<msg>版本不匹配</msg>					</code>
+	<code id="COMPANY_NOT_FOUND">				<num>602</num>	<msg>公司不存在</msg>					</code>
+	<code id="COMPANY_ALREADY_EXISTED">			<num>603</num>	<msg>公司已存在</msg>					</code>
+	<code id="XML_FORMAT_ERROR">				<num>605</num>	<msg>XML格式错误</msg>					</code>
+	<code id="COMPANY_PARAM_ERROR">				<num>606</num>	<msg>公司参数错误</msg>					</code>
+	<code id="PARAM_ERROR">						<num>607</num>	<msg>参数错误</msg>						</code>
+	<code id="PARAM_FORMAT_ERROR">				<num>608</num>	<msg>参数格式错误</msg>					</code>
+	<code id="ADMIN_NOT_ALLOWED_EDIT">			<num>609</num>	<msg>admin不可编辑</msg>					</code>
+	<code id="STAFFNO_NOT_ALLOWED_MODIFY">		<num>611</num>	<msg>员工不可被修改</msg>				</code>
+	<code id="STAFF_NOT_FOUND">					<num>612</num>	<msg>员工不存在</msg>					</code>
+	<code id="STAFF_ALREADY_EXISTED">			<num>613</num>	<msg>员工已存在</msg>					</code>
+	<code id="PASSWORD_ERROR">					<num>614</num>	<msg>密码不正确</msg>					</code>
+	<code id="STAFF_PARAM_ERROR">				<num>615</num>	<msg>员工参数错误</msg>					</code>
+	<code id="STAFFNO_ALREADY_EXISTED">			<num>616</num>	<msg>员工工号已存在</msg>				</code>
+	<code id="AUTHORIZE_FAILED">				<num>617</num>	<msg>授权失败</msg>						</code>
+	<code id="STAFFNO_IS_NULL">					<num>618</num>	<msg>员工工号为空</msg>					</code>
+	<code id="STAFF_FACE_IS_NULL">				<num>620</num>	<msg>员工头像为空</msg>					</code>
+	<code id="DEPARTMENT_NOT_FOUND">			<num>622</num>	<msg>部门不存在</msg>					</code>
+	<code id="DEPARTMENT_ALREADY_EXISTS">		<num>623</num>	<msg>部门已存在</msg>					</code>
+	<code id="DEPARTMENT_NAME_IS_NULL">			<num>624</num>	<msg>部门名称为空</msg>					</code>
+	<code id="DEPARTMENT_PHONE_ERROR">			<num>625</num>	<msg>部门电话格式错误</msg>				</code>
+	<code id="DEPARTMENT_NAME_ERROR">			<num>626</num>	<msg>部门名称格式错误</msg>				</code>
+	<code id="DEPARTMENT_FAX_ERROR">			<num>627</num>	<msg>部门传真号码错误</msg>				</code>
+	<code id="DEPARTMENT_ID_ERROR">				<num>628</num>	<msg>公司ID与父部门公司ID不一致</msg>		</code>
+	<code id="DEPARTMENT_NAME_LENGTH_ERROR">	<num>629</num>	<msg>部门名称过长</msg>					</code>
+	<code id="DEPARTMENT_EXIST_MEMBER">			<num>630</num>	<msg>部门下存在员工</msg>				</code>
+	<code id="DEPARTMENT_EXIST_UNGROUPED">		<num>631</num>	<msg>不能删除未分组</msg>				</code>
+	<code id="xxxxxxxxxxxxxxxxxxxxxxxx">		<num>638</num>	<msg>验证码不存在</msg>					</code>
+	<code id="PARENT_DEPARTMENT_NOT_FOUND">		<num>640</num>	<msg>父部门不存在</msg>					</code>
+	<code id="DEPARTMENT_PARAM_ERROR">			<num>641</num>	<msg>部门参数错误</msg>					</code>
+	<code id="DEFAULT_DEPARTMENT_EDIT_ERROR">	<num>642</num>	<msg>默认部门不能编辑</msg>				</code>
+	<code id="DEPARTMENT_NAME_ALREADY_EXISTED">	<num>643</num>	<msg>部门名称已存在</msg>				</code>
+	<code id="IDENTIFY_CODE_ERROR">				<num>644</num>	<msg>xxxxxxxxxxxxx</msg>				</code>
+	<code id="USER_NOT_FOUND">					<num>645</num>	<msg>用户不存在</msg>					</code>
+	<code id="USERNAME_ALREADY_EXISTED">		<num>646</num>	<msg>用户名已存在</msg>					</code>
+	<code id="USERNAME_OR_PASSWORD_INCORRECT">	<num>647</num>	<msg>用户名或密码错误</msg>				</code>
+	<code id="SESSION_OUT_OF_DATE">				<num>648</num>	<msg>session会话失效</msg>				</code>
+	<code id="USER_NOT_BINDED">					<num>649</num>	<msg>用户未绑定</msg>					</code>
+	<code id="GROUP_NOT_FOUND">					<num>650</num>	<msg>用户组不存在</msg>					</code>
+	<code id="DEFAULT_GROUP_NOT_ALLOWED_EDIT">	<num>651</num>	<msg>默认用户组不可被修改</msg>			</code>
+	<code id="OFFLINE">							<num>670</num>	<msg>用户XMPP已离线</msg>				</code>
+	<code id="TMSI_NO_MATCH">					<num>671</num>	<msg>TMSI不匹配</msg>					</code>
+	<code id="USER_CONFLICT">					<num>672</num>	<msg>用户被踢</msg>						</code>
+	<code id="FILE_NOT_FOUND">					<num>700</num>	<msg>文件不存在</msg>					</code>
+	<code id="FILE_IS_EMPTY">					<num>701</num>	<msg>上传的是空文件</msg>				</code>
+	<code id="NO_FILE_UPLOAD">					<num>712</num>	<msg>没有上传文件</msg>					</code>
+	<code id="PHOTO_PARAM_ERROR">				<num>713</num>	<msg>照片参数错误</msg>					</code>
+	<code id="FILE_FORMAT_ERROR">				<num>714</num>	<msg>文件参数错误</msg>					</code>
+	<code id="FILE_SIZE_ERROR">					<num>715</num>	<msg>文件大小错误</msg>					</code>
+	<code id="PACKAGE_NOT_FOUND">				<num>721</num>	<msg>包不存在</msg>						</code>
+	<code id="NO_AUTHORITY">					<num>722</num>	<msg>无权限</msg>						</code>
+	<code id="NO_CONDITION_DEL">				<num>723</num>	<msg>业务申请不存在</msg>				</code>
+	<code id="ANNOUNCEMENT_NOT_FOUND">			<num>740</num>	<msg>公告不存在</msg>					</code>
+	<code id="SYSTEM_CONFIG_ERROR">				<num>800</num>	<msg>系统配置错误</msg>					</code>
+	<code id="MEMBER_STAFFNO_EXIST">			<num>900</num>	<msg>员工工号已存在</msg>				</code>
+	<code id="MEMBER_PHONE_ERROR">				<num>901</num>	<msg>员工手机号错误</msg>				</code>
+	<code id="MEMBER_OFFICE_ERROR">				<num>902</num>	<msg>员工工作号码错误</msg>				</code>
+	<code id="MEMBER_DELETE_ONESELF">			<num>903</num>	<msg>管理员删除自己错误</msg>				</code>
+	<code id="MEMBER_DELETE_MANAGE">			<num>904</num>	<msg>admin删除公司管理员错误</msg>		</code>
+	<code id="MEMBER_MOVE_ONESELF">				<num>905</num>	<msg>员工不能挪动自己</msg>				</code>
+	<code id="MEMBER_MOVE_MANAGE">				<num>906</num>	<msg>无法挪动公司管理员</msg>				</code>
+	<code id="MEMBER_NOT_EXIST">				<num>907</num>	<msg>员工不存在</msg>					</code>
+	<code id="ROOM_NOT_FOUND">					<num>1001</num>	<msg>XMPP房间不存在</msg>				</code>
+	<code id="ROOM_ALREADY_EXISTED">			<num>1002</num>	<msg>XMPP房间已存在</msg>				</code>
+	<code id="PERMISSIONPROFILE_IS_NULL">		<num>1101</num>	<msg>权限错误</msg>						</code>
+	<code id="FORBID_MODIFY">					<num>1102</num>	<msg>禁止修改</msg>						</code>
+	<code id="Company_Name_Exist">				<num>20001</num><msg>公司名称已存在</msg>				</code>
+	<code id="Company_Name_Is_Null">			<num>20002</num><msg>公司名称为空</msg>					</code>
+	<code id="Company_Address_Is_Null">			<num>20003</num><msg>公司地址为空</msg>					</code>
+	<code id="Company_Postalcode_Error">		<num>20004</num><msg>公司邮政编号错误</msg>				</code>
+	<code id="Company_Fax_Error">				<num>20005</num><msg>公司传真号码错误</msg>				</code>
+	<code id="Company_Name_Not_Modify">			<num>20006</num><msg>公司名称不可被修改</msg>				</code>
+	<code id="Company_Not_Exist">				<num>20007</num><msg>公司不存在</msg>					</code>
+	<code id="Company_Phone_Error">				<num>20008</num><msg>公司联系电话格式错误</msg>			</code>
+	<code id="Company_Name_Error">				<num>20009</num><msg>公司名称格式错误</msg>				</code>
+	<code id="Company_Name_Length_Error">		<num>20010</num><msg>公司名称过长</msg>					</code>
+	<code id="Company_Already_Max_Leavel">		<num>20011</num><msg>公司部门已达最大深度</msg>			</code>
+	<code id="Company_Already_Max_Dep">			<num>20012</num><msg>公司部门个数已达到上限</msg>			</code>
+	<code id="Member_Already_Max_Num">			<num>22001</num><msg>员工已达到最大人数上限</msg>			</code>
+	<code id="Conf_Already_Max_Num">			<num>32000</num><msg>会议创建已达最大上限</msg>			</code>
+	<code id="MEMBERLIST_EMPTY">				<num>90000</num><msg>公告发送对象为空</msg>				</code>
+	<code id="VALIDTIME_ERROR">					<num>90001</num><msg>公告有效时间错误</msg>				</code>
+	<code id="OPEARTE_ERROR">					<num>90002</num><msg>公告操作失败</msg>					</code>
+	<code id="CAN_NOT_SEND">					<num>90003</num><msg>无法发送该公告</msg>				</code>
+	<code id="CAN_NOT_SAVE">					<num>90004</num><msg>无法保存该公告</msg>				</code>
+	<code id="INVALID_DATA">					<num>90005</num><msg>无效公告</msg>						</code>
+	<code id="STAFF_UNRELATED_ANNOUNCEMENT">	<num>90006</num><msg>员工不在公告中</msg>				</code>
+	<code id="ANNOUNCEMENT_LOSEEFFICACY_ERROR">	<num>90007</num><msg>公告已失效</msg>					</code>
+	<code id="ANNOUNCEMENT_MEMBER_NOT_NULL">	<num>90008</num><msg>接收人员不能为空</msg>				</code>
+	<code id="ANNOUNCEMENT_NOT_EXIST">			<num>90100</num><msg>公告不存在</msg>					</code>
+	<code id="VOTE_ABORT_ERROR">				<num>90200</num><msg>投票已截止</msg>					</code>
+	<code id="WEB_USER_KICK">					<num>90201</num><msg>WEB用户被顶号</msg>					</code>
+	<code id="VOTE_OPTION_IS_EMPTY">			<num>91000</num><msg>无投票项</msg>						</code>
+	<code id="HAVE_TO_VOTE">					<num>91001</num><msg>已票项</msg>						</code>
+	<code id="UNBOUND">							<num>92000</num><msg>远程控制未绑定</msg>				</code>
+	<code id="ARE_DEALING_WITH">				<num>92001</num><msg>正在处理中</msg>					</code>
+	<code id="TIMEOUT">							<num>92002</num><msg>远程控制超时</msg>					</code>
+	
+	
+	<!-- 全局共用错误码 -->
+<!-- 	<code id="SUCCESS">				<num>200</num>	<msg>success</msg>		</code> -->
+<!-- 	<code id="PARAM_ERROR">			<num>607</num>	<msg>参数错误</msg>		</code> -->
+	
+	<!-- 业务应用域错误码  client -->
+<!-- 	<code id="C_USER_NOT_FOUND">	<num>xxx</num>	<msg>用户未找到</msg>	</code> -->
+	
+	<!-- 业务应用域错误码  server -->
+<!-- 	<code id="S_USER_NOT_FOUND">	<num>xxx</num>	<msg>用户未找到</msg>	</code> -->
+	
+	<!-- 第三方错误码 -->
+	
+	<!-- 维护错误码 -->
+</codes>

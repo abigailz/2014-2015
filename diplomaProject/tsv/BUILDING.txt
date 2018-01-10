@@ -1,0 +1,90 @@
+Build instructions for tsv
+
+----------------------------------------------------------------------------------
+Requirements:
+
+* BOTUI System
+* JDK 1.6.X
+
+----------------------------------------------------------------------------------
+Main modules:
+
+  BOTUI                            (Main ccs project)
+         - BT-project           (Parent POM for all xxx x modules.             )
+  
+----------------------------------------------------------------------------------
+Maven build goals:
+
+ * Clean                     : mvn clean
+ * Compile                   : mvn compile [-Pnative]
+ * Run tests                 : mvn test [-Pnative]
+ * Create JAR                : mvn package
+ * Run findbugs              : mvn compile findbugs:findbugs
+ * Run checkstyle            : mvn compile checkstyle:checkstyle
+ * Install JAR in M2 cache   : mvn install
+ * Run Rat                   : mvn apache-rat:check
+ * Build javadocs            : mvn javadoc:javadoc
+ * Build distribution        : mvn package [-Pdist][-Pdocs][-Psrc][-Pnative][-Dtar]
+ * Change version     		 : mvn versions:set -DnewVersion=NEWVERSION
+
+ Build options:
+
+  * Use -Pnative to compile/bundle native code
+
+ Tests options:
+
+  * XXX
+
+----------------------------------------------------------------------------------
+Building components separately
+
+
+----------------------------------------------------------------------------------
+Importing projects to eclipse
+
+When you import the project to eclipse, install ccs at first.
+
+  $ cd root
+  $ mvn install
+
+Then, generate eclipse project files.
+
+  $ mvn eclipse:eclipse -DskipTests
+
+Import to eclipse by specifying the root directory of the project via
+[File] > [Import] > [Existing Projects into Workspace].
+
+----------------------------------------------------------------------------------
+
+Building on OS/X
+
+----------------------------------------------------------------------------------
+
+ccs does not build on OS/X with Java 6.
+see: https://xxx/xx
+
+----------------------------------------------------------------------------------
+
+Building on Windows
+
+----------------------------------------------------------------------------------
+Requirements:
+
+* Windows System
+* JDK 1.6
+
+----------------------------------------------------------------------------------
+Building:
+
+----------------------------------------------------------------------------------
+Building distributions:
+
+ * xxx
+ 
+ PACK
+ 
+ 1. 删除 src 下面 text.x 包
+ 2. 删掉相应的doc 等不需要的文件
+ 3. 通过eclipse工具打.WAR包
+ 	[PROJECT] > [Export] > [Web] > [War file] > [].
+ 

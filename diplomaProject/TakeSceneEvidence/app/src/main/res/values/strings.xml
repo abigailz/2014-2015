@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">警务执法</string>
+    <string name="hello_world">创建新任务</string>
+    <string name="closed">关闭任务</string>
+    <string name="hello">欢迎登陆系统</string>
+    <string name="task_list">任务列表</string>
+    <string name="task_title">任务标题</string>
+    <string name="description">描述</string>
+    <string name="status">状态</string>
+    <string name="time">时间</string>
+    <string name="login">登陆</string>
+    <string name="back">退出</string>
+
+    <string name="tip">上传成功</string>
+    <string name="back_tip">提交成功</string>
+    <string name="ok">确认</string>
+    <string name="cancel">取消</string>
+
+    <drawable name="clr_normal">#B0C4DE</drawable>
+    <drawable name="clr_pressed">#778899</drawable>
+
+    <drawable name="BackBar">#000000</drawable>
+</resources>
+

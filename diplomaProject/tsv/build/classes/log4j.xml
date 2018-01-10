@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="false" xmlns:log4j="http://jakarta.apache.org/log4j/" >
+    <appender name="debug-out" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/black/study/Mywork/logs/debug.log" />
+		<param name="MaxFileSize" value="10240KB"/>
+		<param name="Append" value="true"/>
+		<param name="encoding" value="UTF-8" />
+		<param name="Threshold" value="debug" />
+		<param name="MaxBackupIndex" value="20"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy.MM.dd HH:mm:ss} %l - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="debug" /> 
+			<param name="LevelMax" value="debug" />
+		</filter>
+	</appender>
+	
+	<appender name="info-out" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/black/study/Mywork/logs/info.log" />
+		<param name="MaxFileSize" value="10240KB"/>
+		<param name="Append" value="true"/>
+		<param name="encoding" value="UTF-8" />
+		<param name="Threshold" value="info" />
+		<param name="MaxBackupIndex" value="20"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy.MM.dd HH:mm:ss} %l - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="info" />
+			<param name="LevelMin" value="info" />
+		</filter>
+	</appender>
+
+	<appender name="warn-out" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/black/study/Mywork/logs/warn.log" />
+		<param name="MaxFileSize" value="10240KB"/>
+		<param name="Append" value="true"/>
+		<param name="encoding" value="UTF-8" />
+		<param name="Threshold" value="warn" />
+		<param name="MaxBackupIndex" value="20"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy.MM.dd HH:mm:ss}  %l - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="warn" />
+			<param name="LevelMin" value="warn" />
+		</filter>
+	</appender>
+	
+	<appender name="error-out" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/black/study/Mywork/logs/error.log" />
+		<param name="MaxFileSize" value="10240KB"/>
+		<param name="Append" value="true"/>
+		<param name="encoding" value="UTF-8" />
+		<param name="Threshold" value="error"></param>
+		<param name="MaxBackupIndex" value="20"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy.MM.dd HH:mm:ss}  %l - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="error" />
+			<param name="LevelMax" value="error" />
+		</filter>
+	</appender>
+	
+	<appender name="trace-out" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/black/study/Mywork/logs/trace.log" />
+		<param name="MaxFileSize" value="10240KB"/>
+		<param name="Append" value="true"/>
+		<param name="encoding" value="UTF-8" />
+		<param name="Threshold" value="trace"></param>
+		<param name="MaxBackupIndex" value="20"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy.MM.dd HH:mm:ss}  %l - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="trace" />
+			<param name="LevelMax" value="trace" />
+		</filter>
+	</appender>
+	
+	<appender name="fatal-out" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/black/study/Mywork/logs/fatal.log" />
+		<param name="MaxFileSize" value="10240KB"/>
+		<param name="Append" value="true"/>
+		<param name="encoding" value="UTF-8" />
+		<param name="Threshold" value="fatal"/>
+		<param name="MaxBackupIndex" value="20"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy.MM.dd HH:mm:ss}  %l - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="fatal" />
+			<param name="LevelMax" value="fatal" />
+			<!-- <param name="AcceptOnMatch" value="true" /> -->
+		</filter>
+	</appender>
+	
+	<appender name="mycustom" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/black/study/Mywork/logs/myout.log" />
+		<param name="MaxFileSize" value="10240KB"/>
+		<param name="Append" value="true"/>
+		<param name="encoding" value="UTF-8" />
+		<param name="MaxBackupIndex" value="20"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy.MM.dd HH:mm:ss}  %l - %m%n" />
+		</layout>
+		<!-- 
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="debug" />
+			<param name="AcceptOnMatch" value="true" />
+		</filter>
+		 -->
+	</appender>
+	
+	<!-- 发邮件（只有ERROR时才会发送！） -->  
+	<appender name="MAIL"  class="org.apache.log4j.net.SMTPAppender">  
+	  	<!-- 日志的错误级别  -->  
+	   	<param name="threshold" value="fatal"/>  
+	  	<!-- 缓存文件大小，日志达到512K时发送Email -->  
+	  	<param name="BufferSize" value="1" /><!-- 单位K -->  
+	  	<param name="From" value="13881702448@qq.com" />  
+	  	<param name="To" value="1126456011@qq.com" />  
+	  	<!-- <param name="SMTPHost" value="smtp.163.com" />   -->
+	  	<param name="SMTPHost" value="smtp.qq.com" />  
+	  	<param name="SMTPUsername" value="xxxxxxx" />  
+	  	<param name="SMTPPassword" value="xxxxxxx" />  
+	 	<param name="Subject" value="测试邮件发送" />  
+	 	<param name="LocationInfo" value="true" />
+	  	<layout class="org.apache.log4j.PatternLayout">  
+	   		<param name="ConversionPattern"  value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%p]-[%c] %m%n" />  
+	  	</layout> 
+	 </appender>
+	<!--  ===================================================================== -->
+	<appender name="LOG.REMIND_SMTP" class="org.apache.log4j.net.SMTPAppender">  
+        <param name="from" value="xxxxxxx@qq.com" />  
+        <param name="to" value="13881702448@qq.com" /><!--多个邮件地址用逗号分割-->  
+        <param name="subject" value="企业欠费通知" />  
+        <param name="SMTPHost" value="smtp.exmail.qq.com" />  
+        <param name="mail.smtp.auth" value="true"/>
+        <triggeringPolicy class="com.borya.mail.MockTriggeringEventEvaluator$RemindMockTriggeringEventEvaluator" /> <!--邮件发送策略，自已定义-->  
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern" value="%m%n" />  
+        </layout>  
+        <!-- 级别过滤 -->  
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">  
+            <param name="LevelMin" value="REMIND#com.borya.mail.TDTLevel" /> <!--在这里添加我们自定义的级别,注意#号不能少  -->  
+            <param name="LevelMax" value="REMIND#com.borya.mail.TDTLevel" />  
+        </filter>  
+    </appender>  
+     <!-- 程序出错邮件提醒,发送至程序开发人员 -->  
+    <appender name="LOG.ERROR_SMTP" class="org.apache.log4j.net.SMTPAppender">  
+        <param name="from" value="1126456011@qq.com" />  
+        <param name="to" value="13881702448@qq.com" />  
+        <param name="subject" value="MRM平台自动跟踪定位程序出错" />  
+        <param name="SMTPHost" value="smtp.exmail.qq.com" />  
+        <param name="mail.smtp.auth" value="true"/>
+        <triggeringPolicy  
+            class="com.borya.mail.MockTriggeringEventEvaluator$ErrorMockTriggeringEventEvaluator" />  
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern" value="%-5p %c{2} - %m%n" />  
+        </layout>  
+        <!-- 级别过滤 -->  
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">  
+            <param name="LevelMin" value="ERROR" />  
+            <param name="LevelMax" value="FATAL" />  
+        </filter>  
+    </appender>  
+	<!--  ===================================================================== -->
+	
+	<logger name="org" additivity="false">
+	    <level value="info"/>
+	    <appender-ref ref="mycustom"/>
+	</logger>
+	
+	<logger name="com.mchange.v2" additivity="false">
+	    <level value="info"/>
+	    <appender-ref ref="mycustom"/>
+	</logger>
+
+	<!-- 
+	<category name="org.apache.mina.filter">
+	    <priority value="info"/>
+	</category>
+	 -->
+	
+   	<root>
+   <!-- 	    
+		<level value="trace" />
+		<level value="debug" />
+		<level value="info" />
+		<level value="warn" />
+		<level value="error" />
+		<level value="fatal" />
+		<appender-ref ref="LOG.REMIND_SMTP" />  
+    	<appender-ref ref="LOG.ERROR_SMTP" />  
+   -->
+    	<priority value="trace"/>
+    	
+		<appender-ref ref="debug-out" />
+		<appender-ref ref="info-out" />
+		<appender-ref ref="warn-out" />
+		<appender-ref ref="error-out" />
+		<appender-ref ref="trace-out" />
+		<appender-ref ref="fatal-out" />
+	</root>
+</log4j:configuration>

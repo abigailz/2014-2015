@@ -1,0 +1,28 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="client_user" extends="oss" namespace="/c/user">
+		<action name="*" class="com.borya.action.mobile.UserAction" method="{1}">
+			<interceptor-ref name="clientInterceptor" />
+		</action>
+
+	</package>
+
+	<package name="client_question" extends="oss" namespace="/c/question">
+		<action name="*" class="com.borya.action.mobile.QuestionAction" method="{1}">
+		    <interceptor-ref name="defaultStack" />
+			<interceptor-ref name="clientInterceptor" />
+		</action>
+
+	</package>
+	
+	<!-- 
+	<package name="web_banner2" extends="struts-default" namespace="/c/banner2">
+		<action name="*" class="com.borya.action.mobile.BannerAction" method="{1}">
+		</action>
+	</package>
+	 -->
+</struts>

@@ -1,0 +1,22 @@
+﻿BOTUI Change Log
+
+==================================================================================
+Release 1.0.1 - 2015-02-06
+
+ 1. Added CHANGES.txt, logging all significant changes to BOTUI. 
+
+ 2. http S2S接口的修改. 
+    
+    http://host:port/[proj]/notify?token=MD5
+    POST: {
+   		"format":"json",
+   		"cid":"ceshi app",
+   		"uid":"abc_xxdf",
+   		"osType":"1",
+		"msgId":"xx1",
+		"validTime":"xxx",
+   		"context":{ "id":"msgID","type":"2","uid":"xxx"}
+ 		}
+
+==================================================================================
+

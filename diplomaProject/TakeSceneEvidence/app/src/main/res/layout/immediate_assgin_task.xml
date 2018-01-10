@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/no_complete_task_description"
+        layout="@layout/task_no_complete">
+
+    </include>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/no_complete_task_description"
+        android:layout_marginTop="30dip">
+
+        <TextView
+            android:id="@+id/textView0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择空闲人员:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/leisure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/leisure" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/immediate_assgin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginTop="20dip"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_style"
+        android:text="立即分配" />
+
+</RelativeLayout>

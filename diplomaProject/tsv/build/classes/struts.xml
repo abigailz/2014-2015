@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<!-- 
+	配置文件加入此配置意思是是否开启struts的开发模式，
+	如设置为true，则为开发模式，当应用出现异常时会显示更多更详细更有用的错误信息，
+	比如令人头疼的参数类型转换错误，往往让人找遍全页面也未必找得到到底是哪个出错，
+	开启开发模式后则会显示出具体的错误参数和类型
+	 -->
+	<constant name="struts.devMode" value="true" />
+	
+	<package name="oss" extends="struts-default">
+		<interceptors>
+			<!-- 默认的情况下，拦截器会拦截Action中的所有的方法，这里不包括setter或getter方法 -->
+			<interceptor name="clientInterceptor" 
+			    class="com.borya.interceptor.mobile.MobileAuthorInterceptor"/>
+			<interceptor name="webInterceptor" 
+			    class="com.borya.interceptor.web.WebAuthorInterceptor"/>
+			<!-- 定义拦截器栈 -->
+			<interceptor-stack name="opeAuthorStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="webInterceptor">
+				    <param name="excludeMethods">login,logOut</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 定义默认的拦截器 每个Action都会自动引用 如果Action中引用了其它的拦截器 默认的拦截器将无效 -->
+		<!-- 
+		<default-interceptor-ref name="opeAuthorStack"/>
+		 -->
+
+		<!-- 全局results配置 -->
+		<global-results>
+			<result name="login" type="redirect">/login.html</result>
+			<result name="loginout">/oss/jsp/logOut.jsp</result>
+			<result name="download">/jsp/common/download.jsp</result>
+    	</global-results> 
+    	
+		<!--文件上传下载
+		<action name="downloadFile" class="com.borya.action.DownloadFileAction">
+			<param name="savePath">d:/upload</param>
+			<result name="success">index.jsp</result>
+		</action>
+		-->
+	</package>
+	
+	<include file="struts_client.xml"></include>
+	<include file="struts_web.xml"></include>
+</struts>

@@ -1,0 +1,74 @@
+package com.borya.core.userdata;
+
+import java.util.Map;
+
+import org.apache.mina.core.session.IoSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.borya.container.BasicModule;
+import com.borya.core.userdata.store.UserDataStore;
+import com.borya.core.userdata.store.impl.UserDataStoreImpl;
+import com.borya.model.db.AppInfo;
+import com.borya.model.db.NotifyMsg;
+import com.borya.model.userdata.UserInfo;
+
+
+public class UserDataManager extends BasicModule{
+
+	Logger log = LoggerFactory.getLogger(getClass());
+	private static UserDataManager instance;
+	
+	/****** 保存客户端的 连接数据  *********
+	 * UserDataStore<IoSession.hashCode(),IoSession>
+	 * **/
+	private UserDataStore<String,IoSession> ioSessions;
+	
+	/****** 存储用户需要推送的通知数据  *********
+	 * UserDataStore<IoSession.hashCode(),Map<msgId,NotifyMsg>>
+	 * **/
+	private UserDataStore<String,Map<String,NotifyMsg>> notifyMsgs;
+	
+	/****** client ~ server 建立连接后的数据  *********
+	 * UserDataStore<IoSession.hashCode(),UserInfo>
+	 * **/
+	private UserDataStore<String,UserInfo> userInfos;
+	
+	/****** 保存客户端的 连接数据  *********
+	 * UserDataStore<appId,AppInfo>
+	 * **/
+	private UserDataStore<String,AppInfo> appInfos;
+	
+	
+	public UserDataManager(){
+		super("UserDataManager");
+		
+		notifyMsgs = new UserDataStoreImpl<String, Map<String,NotifyMsg>>(10000);
+		ioSessions = new UserDataStoreImpl<String, IoSession>(10000);
+		userInfos = new UserDataStoreImpl<String, UserInfo>(10000);
+		appInfos = new UserDataStoreImpl<String, AppInfo>(100);
+		
+		instance = this;
+		log.debug("Create UserDataManager instance.");
+	}
+	
+	public static final UserDataManager getInstance(){
+		return instance;
+	}
+	
+	public final UserDataStore<String,IoSession> getIoSessions(){
+		return ioSessions;
+	}
+	
+	public final UserDataStore<String,Map<String,NotifyMsg>> getNotifyMsgs(){
+		return notifyMsgs;
+	}
+	
+	public final UserDataStore<String,UserInfo> getUserInfos(){
+		return userInfos;
+	}
+	
+	public final UserDataStore<String,AppInfo> getAppInfos(){
+		return appInfos;
+	}
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="web_user" extends="oss" namespace="/w/user">
+		<!-- 
+		<action name="*" class="com.borya.action.web.UserAction" method="{1}">
+		    <interceptor-ref name="webInterceptor" />
+		    <interceptor-ref name="defaultStack" />
+		</action>
+		 -->
+	</package> 
+	
+</struts>
