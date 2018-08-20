@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>canvas</title>
+</head>
+
+<body>
+  <p>canvas 普通的绘画</p>
+  <canvas width="200" height="200" style="border:1px solid #c3c3c3;" id='myCanvas1'> </canvas>
+
+  <p>canvas 轨迹</p>
+  <canvas width="200" height="200" style="border:1px solid #c3c3c3;" id='myCanvas2'> </canvas>
+
+  <p>canvas 圆</p>
+  <canvas width="200" height="200" style="border:1px solid #c3c3c3;" id='myCanvas3'> </canvas>
+
+  <p>canvas 普通的绘画</p>
+  <canvas width="200" height="200" style="border:1px solid #c3c3c3;" id='myCanvas4'> </canvas>
+
+  <p>canvas 普通的绘画</p>
+  <canvas width="200" height="200" style="border:1px solid #c3c3c3;" id='myCanvas5'> </canvas>
+  
+</body>
+
+<script type="text/javascript">
+  let myCanvas1 = document.getElementById("myCanvas1")
+  let cxt1 = myCanvas1.getContext("2d")
+  cxt1.fillStyle = "#FF0000"
+  cxt1.fillRect(0, 0, 150, 75)
+
+
+  let myCanvas2 = document.getElementById("myCanvas2")
+  let cxt2 = myCanvas2.getContext("2d")
+  cxt2.moveTo(10,10)
+  cxt2.lineTo(150, 150)
+  cxt2.lineTo(150, 50)
+  cxt2.stroke()
+
+
+  let myCanvas3 = document.getElementById("myCanvas3")
+  let cxt3 = myCanvas3.getContext("2d")
+  cxt3.moveTo(10,10)
+  cxt3.lineTo(150, 150)
+  cxt3.lineTo(150, 50)
+  cxt3.stroke()
+
+</script>
+
+</html>
