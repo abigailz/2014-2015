@@ -51,12 +51,14 @@
 
   let myCanvas4 = document.getElementById("myCanvas4")
   let cxt4 = myCanvas4.getContext("2d")
-  cxt4.fillStyle = '#ff0000'
-  cxt4.beginPath()
-  cxt4.arc(100, 100, 10, 0, 2 * Math.PI, false)
-  cxt4.closePath()
-  cxt4.fill()
+  var grd = cxt4.createLinearGradient(0, 0, 175, 50);
+  grd.addColorStop(0, "#FF0000");
+  grd.addColorStop(0.5, "#ccc");
+  grd.addColorStop(1, "#00FF00");
+  cxt4.fillStyle = grd;
+  cxt4.fillRect(0, 0, 175, 50);
 
+  
 </script>
 
 </html>
